@@ -11,6 +11,10 @@
                 <textarea id="textarea2" class="text-area" placeholder="Type here" formControlName="note"></textarea>
             </div>
             </div>
+
+            <div class="center">
+                <input type="button" [disabled]="noteForm.invalid" (click)="saveNote()" class="btn blue ligthen-2" value="Save note">
+            </div>
         </form>
     </div>
 </div>  

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NoteService } from './../../services/notes/notes.service';
 @Component({
   selector: 'app-new-note',
   templateUrl: './new-note.component.html',
@@ -8,16 +10,31 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class NewNoteComponent implements OnInit {
   noteForm: FormGroup;
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private notesService: NoteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.noteForm = this.formBuilder.group(
       {
-        title: ['', []],
+        title: ['', [Validators.required]],
         note: ['', []]
       }
     )
+  }
+
+
+  saveNote(){
+    console.log('clicking')
+    this.notesService.addNewNote(this.noteForm.value)
+    .subscribe(data => {
+      console.log('submitted')
+      this.noteForm.reset();
+      this.router.navigateByUrl('/');
+    }, err => {
+      console.log(err);
+    })
   }
 
 }

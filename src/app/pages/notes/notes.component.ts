@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '../../models/notes';
+import { NoteService } from './../../services/notes/notes.service';
 @Component({
   selector: 'app-note',
   templateUrl: './notes.component.html',
@@ -8,67 +9,18 @@ import { Note } from '../../models/notes';
 export class NotesComponent implements OnInit {
   notes: Note[];
   newNotes: Note[];
-  constructor(){}
+  constructor(
+    private noteService: NoteService
+  ){}
   ngOnInit() {
-    this.notes = [
-      {
-        id: 1,
-        title: "The Note Keeper",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 2,
-        title: "My Note Keeper",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 3,
-        title: "I love Note Keepers",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 4,
-        title: "Alway Use Note Keeper",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 5,
-        title: "The Note Keeper",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 6,
-        title: "My Note Keeper",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 7,
-        title: "I love Note Keepers",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      },
-      {
-        id: 8,
-        title: "Alway Use Note Keeper",
-        note: `
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
-      }
-    ]
-    this.newNotes = this.notes;
+    this.noteService.getNotes().subscribe((data) => {
+      this.notes = data.reverse();
+    },error => {
+      console.log(error);
+    })
+    setTimeout(() => {
+      this.newNotes = this.notes;
+    }, 500)
   }
 
   searchFunc(noteTitle: string){

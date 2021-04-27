@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -11,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { environment } from '../environments/environment';
 
@@ -23,6 +26,8 @@ import { NoteComponent } from './pages/note/note.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { EditNoteComponent } from './pages/edit-note/edit-note.component';
 import { NewNoteComponent } from './pages/new-note/new-note.component';
+
+import { InMemNoteService } from './services/note.service';
 
 @NgModule({
   declarations: [
@@ -39,10 +44,9 @@ import { NewNoteComponent } from './pages/new-note/new-note.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemNoteService),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    MenubarModule,
-    InputTextModule,
-    ButtonModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     NgxPaginationModule,

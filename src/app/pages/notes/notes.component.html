@@ -10,10 +10,13 @@
   </div>
 
 
-  <app-note-list [notes] = "newNotes"></app-note-list>
+  <div *ngIf="newNotes">
+    
+    <app-note-list [notes] = "newNotes"></app-note-list>
+  </div>
 
 
   <a class="btn-floating btn-large waves-effect waves-light blue" routerLink="/notes/newNote"><i class="fas fa-plus"></i></a>
 
-  
+
 </div>
