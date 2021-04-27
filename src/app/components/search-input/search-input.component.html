@@ -1,12 +1,4 @@
-<div class="row">
-    <div class="col l3 m3 "></div>
-    <form class="col l6 m6 s12">
-      <div class="row">
-        <div class="input-field col s12 m12 l12">
-          <input id="input_text" type="text" data-length="10">
-          <label for="input_text">Search Note</label>
-        </div>
-      </div>
-    </form>
-    <div class="col l3 m3"></div>
+<div class="input-field">
+  <input id="input_text" type="text" data-length="10" [formControl]="searchString" (keyup)="searchNote()" >
+  <label for="input_text">Search Note</label>
 </div>

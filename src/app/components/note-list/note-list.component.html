@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col l3 m3"></div>
+    <div class="col l6 s12 m6">
+        <ul class="collection" *ngFor="let note of notes | paginate: {  
+            itemsPerPage: 10,
+            currentPage: p,
+            totalItems: notes.length
+        }">
+            <li class="collection-item" style="margin-top:5px;" [routerLink]="['/notes/note/', note.id ]"> 
+                <div class="row">
+                    <div class="col l7 s7 blue-text lighen-2"> {{ note.title }} </div>
+                    <div class="col l3 s3 push-l3 push-s2">
+                        <i class="fas fa-edit green-text"></i>&nbsp;&nbsp;<i class="fas fa-trash red-text"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <pagination-controls (pageChange)="p = $event" [autoHide]="true"></pagination-controls>
+    </div>
+    <div class="col l3 m3"></div>
+</div>

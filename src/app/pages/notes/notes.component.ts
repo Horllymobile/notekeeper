@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Note } from './../../models/notes';
+import { Note } from '../../models/notes';
 @Component({
-  selector: 'app-note-list',
-  templateUrl: './note-list.component.html',
-  styleUrls: ['./note-list.component.scss']
+  selector: 'app-note',
+  templateUrl: './notes.component.html',
+  styleUrls: ['./notes.component.scss']
 })
-export class NoteListComponent implements OnInit {
+export class NotesComponent implements OnInit {
   notes: Note[];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  newNotes: Note[];
+  constructor(){}
+  ngOnInit() {
     this.notes = [
       {
         id: 1,
@@ -69,6 +68,15 @@ export class NoteListComponent implements OnInit {
         Nulla officia porro beatae voluptatibus ea pariatur fugiat dicta sint impedit? Soluta!`
       }
     ]
+    this.newNotes = this.notes;
+  }
+
+  searchFunc(noteTitle: string){
+    if(noteTitle){
+      this.newNotes = this.notes.filter(note => note.title.toLowerCase().includes(noteTitle.toLowerCase()));
+      return;
+    }
+    this.newNotes = this.notes;
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Note } from './../../models/notes';
+
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -8,8 +8,6 @@ import { Note } from './../../models/notes';
 export class NoteComponent implements OnInit {
 
   constructor() { }
-
-  note: Note;
 
   ngOnInit(): void {
   }

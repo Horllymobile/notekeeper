@@ -1,0 +1,19 @@
+<div>
+
+
+  <div class="row">
+    <div class="col l3 m3"></div>
+    <div class="col l6 m6 s12">
+      <app-search-input (search)="searchFunc($event)"></app-search-input>
+    </div>
+    <div class="col l3 m3 "></div>
+  </div>
+
+
+  <app-note-list [notes] = "newNotes"></app-note-list>
+
+
+  <a class="btn-floating btn-large waves-effect waves-light blue" routerLink="/notes/newNote"><i class="fas fa-plus"></i></a>
+
+  
+</div>
