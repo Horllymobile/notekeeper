@@ -20,7 +20,7 @@ export class NotesComponent implements OnInit {
     })
     setTimeout(() => {
       this.newNotes = this.notes;
-    }, 500)
+    }, 1000);
   }
 
   searchFunc(noteTitle: string){

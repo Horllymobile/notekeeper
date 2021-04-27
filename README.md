@@ -1,5 +1,7 @@
 <h1>Notekeeper</h1>
 
+<a href="">Save your notes<a>
+
 <p>
     This app will keep your note for you
 </p>
@@ -15,3 +17,6 @@
 <img src="./readme-images/Notekeeper-newnote-mobile.jpg" />
 
 <img src="./readme-images/Notekeeper-sidenav-mobile.jpg" />
+
+<footer> &copy; created by <a href="https://github/Horllymobile">Horllymobile</a> </footer>
+

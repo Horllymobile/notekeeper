@@ -10,9 +10,12 @@
   </div>
 
 
-  <div *ngIf="newNotes">
-    
+  <div *ngIf="newNotes?.length > 0">
     <app-note-list [notes] = "newNotes"></app-note-list>
+  </div>
+
+  <div *ngIf="newNotes.length <= 0">
+    <p class="mute">Click the button to add note</p>
   </div>
 
 
