@@ -1,6 +1,6 @@
 <h1>Notekeeper</h1>
 
-<a href="">Save your notes<a>
+<a href="https://my-note-keeper.netlify.app/notes">Save your notes<a>
 
 <p>
     This app will keep your note for you
