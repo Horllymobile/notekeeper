@@ -11,6 +11,12 @@ export class AppComponent implements OnInit{
 
   constructor(private swUpdate: SwUpdate){
 
+    this.swUpdate.available.subscribe((event) => {
+      if(prompt(`We are updating from ${event.current} to ${event.available}`)){
+        this.swUpdate.activateUpdate().then(() => document.location.reload());
+      }
+    })
+
   }
 
   ngOnInit(): void{
