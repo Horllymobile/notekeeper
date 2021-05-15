@@ -14,12 +14,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.swUpdate.checkForUpdate()
-    .then(res => {
-      alert('New features added');
-    }).catch(err => {
-      console.log(err);
-    })
+    
   }
 
 }
