@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col l7 s7 blue-text lighen-2" [routerLink]="['/notes/note/', note.id ]"> {{ note.title }} </div>
                     <div class="col l3 s3 push-l3 push-s2">
-                        <i class="fas fa-edit green-text"></i>&nbsp;&nbsp;<i class="fas fa-trash red-text"></i>
+                        <i class="fas fa-edit green-text"></i>&nbsp;&nbsp;<i class="fas fa-trash red-text" (click)="deleteNote(note)"></i>
                     </div>
                 </div>
             </li>

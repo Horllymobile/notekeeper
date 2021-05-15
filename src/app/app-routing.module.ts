@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: '', redirectTo: 'notes', pathMatch: 'full'},
   {path: 'notes', children: [
     {path: '', component: NotesComponent},
-    {path: 'note/:id', component: NoteComponent},
-    {path: 'edit/:id', component: EditNoteComponent},
+    {path: 'note/:id', component: EditNoteComponent},
+    // {path: 'notes/:id', component: EditNoteComponent},
     {path: 'newNote', component: NewNoteComponent}
   ]}
 ];

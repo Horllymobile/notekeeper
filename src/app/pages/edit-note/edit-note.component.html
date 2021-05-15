@@ -1,16 +1,23 @@
 <div class="">
-    <div class="row">
-        <form class="col s12" novalidate>
+    <div class="row" >
+        <form class="col s12" novalidate [formGroup]="editNoteForm">
             <div class="row">
             <div class="input-field col l12 s12 m12">
-                <input id="input_text" type="text" data-length="10" formControlName="title">
-                <label for="input_text">Title</label>
+                <input id="input_text" type="text" formControlName="title">
             </div>
             </div>
             <div class="row">
             <div class="col s12 l12 m12">
                 <textarea id="textarea2" class="text-area" formControlName="note"></textarea>
             </div>
+            </div>
+
+            <div class="right">
+                <input type="button" [disabled]="editNoteForm.invalid" (click)="saveNote()" class="btn blue ligthen-2" value="Save note">
+            </div>
+
+            <div class="left">
+                <input type="button" (click)="cancle()" class="btn red ligthen-2" value="cancle">
             </div>
         </form>
     </div>

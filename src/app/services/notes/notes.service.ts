@@ -1,8 +1,7 @@
+import Localbase from 'localbase';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Note } from 'src/app/models/notes';
-
 
 @Injectable({
     providedIn: 'root'
@@ -10,24 +9,35 @@ import { Note } from 'src/app/models/notes';
 export class NoteService {
 
     private apiUrl = 'api/notes';
+    db:Localbase;
 
     constructor(
-        private http: HttpClient
-    ){}
-
-    getNotes(): Observable<Note[]>{
-        return this.http.get<Note[]>(this.apiUrl);
+    ){
+        this.db = new Localbase('notes');
     }
 
-    addNewNote(noteObject: Note) {
-        return this.http.post<Note>(this.apiUrl, noteObject);
+    getNote(noteId: number): Promise<any>{
+        return this.db.collection('notes').doc({ id: +noteId }).get();
     }
 
-    editNote(editedNoteObject: Note){
-
+    getNotes(): Promise<any>{
+        return this.db.collection('notes').get();
     }
 
-    deleteNote() {
+    addNewNote(noteObject: Note): Promise<any> {
+        noteObject.id = Date.now() / 2;
+        return this.db.collection('notes').add(noteObject);
+    }
 
+    updateNote(noteId: number, editedNoteObject: Note): Promise<any>{
+        return this.db.collection('notes').doc({id: +noteId}).set({
+            id: +noteId,
+            title: editedNoteObject.title,
+            note: editedNoteObject.note
+        })
+    }
+
+    deleteNote(noteId: number): Promise<any>{
+        return this.db.collection('notes').doc({id: +noteId}).delete();
     }
 }

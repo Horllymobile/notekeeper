@@ -13,14 +13,10 @@ export class NotesComponent implements OnInit {
     private noteService: NoteService
   ){}
   ngOnInit() {
-    this.noteService.getNotes().subscribe((data) => {
-      this.notes = data.reverse();
-    },error => {
-      console.log(error);
-    })
-    setTimeout(() => {
+    this.noteService.getNotes().then((data: Note[]) => {
+      this.notes = data;
       this.newNotes = this.notes;
-    }, 1000);
+    }).catch(err => console.log(err));
   }
 
   searchFunc(noteTitle: string){
@@ -29,6 +25,18 @@ export class NotesComponent implements OnInit {
       return;
     }
     this.newNotes = this.notes;
+  }
+
+  deleteNote(noteId){
+    if(confirm("Are you sure ?")){
+      this.noteService.deleteNote(noteId)
+      .then(data => {
+        console.log(this.notes.findIndex(value => value.id === noteId));
+        this.notes.splice(this.notes.findIndex(value => value.id === noteId), 1);
+        this.newNotes = this.notes;
+      })
+      .catch(err => {});
+    }
   }
 
 }

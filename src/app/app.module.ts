@@ -27,7 +27,6 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { EditNoteComponent } from './pages/edit-note/edit-note.component';
 import { NewNoteComponent } from './pages/new-note/new-note.component';
 
-import { InMemNoteService } from './services/note.service';
 
 @NgModule({
   declarations: [
@@ -44,8 +43,6 @@ import { InMemNoteService } from './services/note.service';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemNoteService),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

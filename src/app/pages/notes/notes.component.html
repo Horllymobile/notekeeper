@@ -11,10 +11,10 @@
 
 
   <div *ngIf="newNotes?.length > 0">
-    <app-note-list [notes] = "newNotes"></app-note-list>
+    <app-note-list [notes] = "newNotes" (delete) = "deleteNote($event)"></app-note-list>
   </div>
 
-  <div *ngIf="newNotes.length <= 0">
+  <div *ngIf="newNotes.length <= 0" class="center" style="margin-top: 50%;">
     <p class="mute">Click the button to add note</p>
   </div>
 

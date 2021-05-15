@@ -12,8 +12,12 @@
             </div>
             </div>
 
-            <div class="center">
+            <div class="right">
                 <input type="button" [disabled]="noteForm.invalid" (click)="saveNote()" class="btn blue ligthen-2" value="Save note">
+            </div>
+
+            <div class="left">
+                <input type="button" (click)="cancle()" class="btn red ligthen-2" value="cancle">
             </div>
         </form>
     </div>

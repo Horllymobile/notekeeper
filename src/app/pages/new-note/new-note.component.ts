@@ -28,13 +28,19 @@ export class NewNoteComponent implements OnInit {
   saveNote(){
     console.log('clicking')
     this.notesService.addNewNote(this.noteForm.value)
-    .subscribe(data => {
+    .then(data => {
       console.log('submitted')
       this.noteForm.reset();
       this.router.navigateByUrl('/');
-    }, err => {
-      console.log(err);
-    })
+    }).catch(err => console.log(err));
+  }
+
+  cancle(){
+
+    if(confirm('Are your sure')){
+      this.router.navigateByUrl('/');
+    }
+
   }
 
 }
