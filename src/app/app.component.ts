@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
-import { } from '@angular/service-worker';
+import { Component, OnInit } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   title = 'note-keeper';
+
+  constructor(private swUpdate: SwUpdate){
+
+  }
+
+  ngOnInit(): void{
+    this.swUpdate.checkForUpdate()
+    .then(res => {
+      alert('New features added');
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
 }
