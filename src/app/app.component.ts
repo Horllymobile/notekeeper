@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Note } from './models/notes';
+import { } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
